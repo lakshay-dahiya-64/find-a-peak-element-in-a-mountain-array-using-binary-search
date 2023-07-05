@@ -1,0 +1,39 @@
+//find the peak element in a mountain array using binary search
+
+#include<iostream>
+using namespace std;
+int findpeakelement(int *arr,int size){
+   int start=0;
+   int end=size-1;
+  while(start<end){
+   int middle= start+ (end-start)/2;
+
+   // only 3 cases honge ya to hmara middle ascending line mei hoga ya descending line mei ya peak element pei
+   // agar hum ascending line mei hai to particular element apne agle element se chota hoga agar huwa to mtlb hame right mei search karna hai 
+   // kyoki peak element right mei hi hoga as the elements are in ascending order
+   
+   if(arr[middle]<arr[middle+1]){
+      start= middle+1;
+   }
+
+   // or agar hum ascending list mei nahi hai to ya to peak element pei honge ya descending list mei lekin the catch is hame descending list k bhi 
+   // left mei ana hai to search for the peak element so end ko middle kardenge jis se list right se kat jaaye dry run for more clarification
+
+   else{
+      end= middle;
+   }
+  }
+  return end;
+}
+int main(){
+   int arr[]={2,3,4,5,3,1};
+   int size=6;
+   int ans=findpeakelement(arr,size);
+   cout<< ans;
+   return 0;
+
+}
+
+//dry run on the following test cases
+// 1 2 1 3 5 6 4
+// 2 5 3 2 1 1
